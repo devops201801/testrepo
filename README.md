@@ -1,14 +1,6 @@
 # testrepo
 This is testrepo repository. Below is the good content about git commands and stuff. Happy doing git!
 
-﻿<img
-  src="/img/git.png"
-  width="70"
-  align="right"
-/>
-
-
-
 # Useful Git Commands
 
 You can also read the [Portuguese](translation/README.pt-br.md) version.
