@@ -417,3 +417,126 @@ lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s
 4. Push to the branch: `git push -u origin my-new-feature`
 5. Submit a pull request - cheers!
 
+
+
+<h1>GIT Directory Structure Tutorial</h1>
+<h2>Learn how GIT structures the repository content</h2>
+<p>A <strong>.git</strong> directory has a structure similar to the following one:</p>
+
+<li><strong>objects/ folder</strong><br>
+In this directory the data of your Git objects is stored – all the contents of the files you have ever checked in, your commits, trees and tag objects.<p></p>
+<ul>
+<li>
+<ul>
+<li><strong>objects/[0-9a-f][0-9a-f] folders</strong></li>
+</ul>
+</li>
+</ul>
+<p>A newly created object is stored in its own file. The objects are placed over 256 subdirectories using the first two characters of the SHA1 object name to keep the number of directory entries in objects itself to a manageable number. Objects found here are often called unpacked or loose objects.</p>
+<ul>
+<li>
+<ul>
+<li><strong>objects/pack folder</strong></li>
+</ul>
+</li>
+</ul>
+<p>Files that store many object in compressed form, along with index files to allow them to be randomly accessed are found in this directory.</p>
+<ul>
+<li>
+<ul>
+<li><strong>objects/info folder</strong></li>
+</ul>
+</li>
+</ul>
+<p>Additional information about the object stored is placed in this directory.</p></li>
+<li><strong>refs folder</strong><br>
+References are stored in subdirectories of this directory. The git prune command knows to preserve objects reachable from refs found in this directory and its subdirectories.<p></p>
+<ul>
+<li>
+<ul>
+<li><strong>refs/heads/ folder<br>
+</strong></li>
+</ul>
+</li>
+</ul>
+<p>Contains commit objects.</p>
+<ul>
+<li>
+<ul>
+<li><strong>refs/tags/ folder</strong></li>
+</ul>
+</li>
+</ul>
+<p>Contains any object name.</p>
+<ul>
+<li>
+<ul>
+<li><strong>refs/remotes/ folder</strong></li>
+</ul>
+</li>
+</ul>
+<p>Contains commit objects of branches copied from a remote repository.</p></li>
+<li><strong>packed-refs file<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">The file consists of packed heads and tags. It is useful for an efficient repository access.</p>
+<ul>
+<li><strong>HEAD file<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">This file holds a reference to the branch you are currently on. This tells Git what to use as the parent of your next commit</p>
+<ul>
+<li><strong>config file<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">This is the main Git configuration file. It keeps specific Git options for your project, such as your remotes, push configurations, tracking branches and more. Your configuration will be loaded first from this file, then from a <em>~/.gitconfig</em> file and then from an <em>/etc/gitconfig</em> file, if they exist.</p>
+<ul>
+<li><strong>branches</strong></li>
+</ul>
+<p style="padding-left: 30px;">A deprecated way to store shorthands to be used to specify a URL to <em>git fetch</em>, <em>git pull</em> and <em>git push</em>. This mechanism is legacy and not likely to be found in modern repositories.</p>
+<ul>
+<li><strong>hooks folder<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">This directory contains shell scripts that are invoked after the corresponding Git commands. For example, after you run a commit, Git will try to execute the post-commit script.</p>
+<ul>
+<li><strong>index file</strong></li>
+</ul>
+<p style="padding-left: 30px;">The GIT index is used as a staging area between your working directory and your repository. You can use the index to build up a set of changes that you want to commit together. When you create a commit, what is committed is what is currently in the index, not what is in your working directory. It is a binary file containing a sorted list of path names, each with permissions and the SHA-1 of a blob object.</p>
+<ul>
+<li><strong>info folder<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">Additional information about the repository is recorded in this directory.</p>
+<ul>
+<li><strong>remotes folder<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">This folder contains shorthands for URL and default refnames for use when interacting with remote repositories via <em>git fetch</em>, <em>git pull</em> and <em>git push</em> commands. This mechanism is legacy and not likely to be found in modern repositories.</p>
+<ul>
+<li><strong>logs folder</strong><br>
+Stores the changes made to refs in repository.<p></p>
+<ul>
+<li>
+<ul>
+<li><strong>logs/refs/heads/</strong> folder</li>
+</ul>
+</li>
+</ul>
+<p>Records all changes made to the different branch tips</p>
+<ul>
+<li>
+<ul>
+<li><strong>logs/refs/tags/</strong> folder</li>
+</ul>
+</li>
+</ul>
+<p>Records all changes made to the different tags</p></li>
+<li><strong>modules folder<br>
+</strong></li>
+</ul>
+<p style="padding-left: 30px;">Contains the git-repositories of the submodules.</p>
+<ul>
+<li><strong>worktrees folder<br>
+</strong></li>
+</ul>
